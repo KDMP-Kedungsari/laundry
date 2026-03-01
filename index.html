@@ -90,7 +90,7 @@
 html,body{
   font-family:'Nunito',sans-serif;
   background:linear-gradient(160deg,#e0f7fa 0%,#bae6fd 40%,#e0f2fe 100%);
-  height:100vh;height:100dvh;overflow:hidden;color:var(--txt);position:relative;
+  height:100vh;overflow:hidden;color:var(--txt);position:relative;
 }
 
 /* BUBBLES BG */
@@ -117,10 +117,8 @@ html,body{
 /* PAGE */
 .page{
   position:relative;z-index:10;display:flex;flex-direction:column;
-  height:100vh;height:100dvh;
-  max-width:430px;margin:0 auto;
-  padding:10px 12px 14px;gap:6px;
-  overflow:hidden;
+  height:100vh;max-width:430px;margin:0 auto;
+  padding:10px 12px;gap:8px;
 }
 
 /* HEADER */
@@ -143,13 +141,15 @@ html,body{
 @keyframes slideDown{from{transform:translateY(-16px);opacity:0}to{transform:translateY(0);opacity:1}}
 
 /* SLIDER */
-.slider-wrap{
-  position:relative;border-radius:20px;overflow:hidden;
-  box-shadow:0 6px 28px rgba(14,165,233,.2);
-  animation:fadeIn .6s .1s ease both;
-  flex-shrink:1;
-  height:130vh;
-  max-height:130vh;
+.slider-wrap {
+  flex: 1;
+  max-height: 60vh; /* Ini kunci agar foto memendek dan tombol naik */
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 28px rgba(14, 165, 233, .2);
+  animation: fadeIn .6s .1s ease both;
+  min-height: 0;
 }
 @keyframes fadeIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
 .slider-track{display:flex;height:100%;transition:transform .4s cubic-bezier(.4,0,.2,1);}
@@ -216,11 +216,7 @@ html,body{
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* NAV */
-.nav-buttons{
-  display:flex;gap:7px;
-  animation:slideUp .5s .3s ease both;
-  flex-shrink:0;
-}
+.nav-buttons{display:flex;gap:7px;animation:slideUp .5s .3s ease both;}
 @keyframes slideUp{from{transform:translateY(14px);opacity:0}to{transform:translateY(0);opacity:1}}
 .nav-btn{
   flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
@@ -294,19 +290,17 @@ html,body{
 }
 
 @media(min-height:800px){
-  .page{padding:14px 14px 16px;gap:10px;}
+  .page{padding:14px 14px;gap:10px;}
   .header-title{font-size:1.8rem;}
-  .nav-btn{padding:12px 4px;font-size:.7rem;}
-  .nav-btn .nb-ico{font-size:1.4rem;}
+  .nav-btn{padding:11px 4px;font-size:.68rem;}
+  .nav-btn .nb-ico{font-size:1.35rem;}
 }
 @media(max-height:640px){
-  .header{padding:6px 12px;}
-  .header-title{font-size:1.35rem;}
-  .header-icon{font-size:1.5rem;}
-  .ticker-wrap{padding:5px 0;}
-  .ticker-inner{font-size:.7rem;}
-  .nav-btn{padding:6px 3px;font-size:.6rem;}
-  .nav-btn .nb-ico{font-size:.95rem;}
+  .header{padding:7px 12px;}
+  .header-title{font-size:1.4rem;}
+  .header-icon{font-size:1.6rem;}
+  .nav-btn{padding:7px 3px;}
+  .nav-btn .nb-ico{font-size:1rem;}
 }
 </style>
 </head>
@@ -340,32 +334,38 @@ html,body{
   </div>
 
   <nav class="nav-buttons" aria-label="Menu">
-    <a class="nav-btn nb-sky"
-       href="https://script.google.com/macros/s/AKfycbxtVstuLMKCsJXJlrt9JHRWg9d19vhnONXx9eLcOeERi2CvNXn6SE33e7_OK6352T0/exec"
-       target="_blank" rel="noopener" aria-label="Halaman Layanan">
-      <span class="nb-ico" aria-hidden="true">🧺</span><span>Layanan</span>
-    </a>
-    <a class="nav-btn nb-teal"
-       href="https://script.google.com/macros/s/AKfycbxtVstuLMKCsJXJlrt9JHRWg9d19vhnONXx9eLcOeERi2CvNXn6SE33e7_OK6352T0/exec?page=harga"
-       target="_blank" rel="noopener" aria-label="Cek Harga Laundry">
-      <span class="nb-ico" aria-hidden="true">💰</span><span>Harga</span>
-    </a>
-    <a class="nav-btn nb-amber"
-       href="https://script.google.com/macros/s/AKfycbxtVstuLMKCsJXJlrt9JHRWg9d19vhnONXx9eLcOeERi2CvNXn6SE33e7_OK6352T0/exec?page=order-list"
-       target="_blank" rel="noopener" aria-label="Cek Status Cucian">
-      <span class="nb-ico" aria-hidden="true">📦</span><span>Status</span>
-    </a>
-    <a class="nav-btn nb-green"
-       href="https://maps.google.com/?q=Wisma+Laundry"
-       target="_blank" rel="noopener" aria-label="Lokasi di Google Maps">
-      <span class="nb-ico" aria-hidden="true">📍</span><span>Lokasi</span>
-    </a>
-    <a class="nav-btn nb-wa"
-       href="https://wa.me/6281328267973?text=Halo+Wisma+Laundry,+saya+mau+bertanya"
-       target="_blank" rel="noopener" aria-label="Chat WhatsApp">
-      <span class="nb-ico" aria-hidden="true">💬</span><span>Chat WA</span>
-    </a>
-  </nav>
+
+  <a class="nav-btn nb-sky" 
+      href="https://script.google.com/macros/s/AKfycbxtVstuLMKCsJXJlrt9JHRWg9d19vhnONXx9eLcOeERi2CvNXn6SE33e7_OK6352T0/exec" 
+     target="_blank" rel="noopener">
+    <span class="nb-ico">🧺</span><span>Layanan</span>
+  </a>
+
+  <a class="nav-btn nb-teal" 
+     href="https://script.google.com/.../exec?page=harga" 
+     target="_blank" rel="noopener">
+    <span class="nb-ico">💰</span><span>Harga</span>
+  </a>
+
+  <a class="nav-btn nb-amber" 
+     href="https://script.google.com/.../exec?page=order-list" 
+     target="_blank" rel="noopener">
+    <span class="nb-ico">📦</span><span>Status</span>
+  </a>
+
+  <a class="nav-btn nb-green" 
+     href="https://maps.google.com/?q=Wisma+Laundry" 
+     target="_blank" rel="noopener">
+    <span class="nb-ico">📍</span><span>Lokasi</span>
+  </a>
+
+  <a class="nav-btn nb-wa" 
+     href="https://wa.me/6281328267973?text=Halo+Wisma+Laundry,+saya+mau+bertanya" 
+     target="_blank" rel="noopener">
+    <span class="nb-ico">💬</span><span>Chat WA</span>
+  </a>
+
+</nav>
 
 </main>
 
@@ -418,7 +418,7 @@ const SLIDES = [
     fallback   : '⚡',
     fallbackSub: 'Laundry Ekspres',
     hasGallery : true,  galleryIdx: 1,
-    hasVideo   : true,
+    hasVideo   : false,
     videoUrl   : 'https://www.youtube.com/embed/GANTI_ID_VIDEO',  // ← ganti ID video
   },
   {
@@ -427,7 +427,7 @@ const SLIDES = [
     photo      : 'assets/images/slides/dry-cleaning.jpg',
     fallback   : '👔',
     fallbackSub: 'Dry Cleaning',
-    hasGallery : false, galleryIdx: -1,
+    hasGallery : true, galleryIdx: -1,
     hasVideo   : true,
     videoUrl   : 'https://www.youtube.com/embed/GANTI_ID_VIDEO',
   },
