@@ -118,7 +118,7 @@ html,body{
 .page{
   position:relative;z-index:10;display:flex;flex-direction:column;
   height:100vh;max-width:430px;margin:0 auto;
-  padding:10px 12px;gap:8px;
+  padding:10px 12px env(safe-area-inset-bottom, 12px);gap:8px;
 }
 
 /* HEADER */
@@ -285,7 +285,7 @@ html,body{
 }
 
 @media(min-height:800px){
-  .page{padding:14px 14px;gap:10px;}
+  .page{padding:14px 14px env(safe-area-inset-bottom,14px);gap:10px;}
   .header-title{font-size:1.8rem;}
   .nav-btn{padding:11px 4px;font-size:.68rem;}
   .nav-btn .nb-ico{font-size:1.35rem;}
@@ -296,6 +296,11 @@ html,body{
   .header-icon{font-size:1.6rem;}
   .nav-btn{padding:7px 3px;}
   .nav-btn .nb-ico{font-size:1rem;}
+}
+/* Tombol nav tidak tertutup di semua HP */
+.nav-buttons{
+  flex-shrink:0;
+  padding-bottom:max(6px, env(safe-area-inset-bottom, 6px));
 }
 </style>
 </head>
@@ -329,38 +334,32 @@ html,body{
   </div>
 
   <nav class="nav-buttons" aria-label="Menu">
-
-  <a class="nav-btn nb-sky" 
-     href="https://script.google.com/macros/s/AKfycbxtVstuLMKCsJXJlrt9JHRWg9d19vhnONXx9eLcOeERi2CvNXn6SE33e7_OK6352T0/exec" 
-     target="_blank" rel="noopener">
-    <span class="nb-ico">🧺</span><span>Layanan</span>
-  </a>
-
-  <a class="nav-btn nb-teal" 
-     href="https://script.google.com/.../exec?page=harga" 
-     target="_blank" rel="noopener">
-    <span class="nb-ico">💰</span><span>Harga</span>
-  </a>
-
-  <a class="nav-btn nb-amber" 
-     href="https://script.google.com/.../exec?page=order-list" 
-     target="_blank" rel="noopener">
-    <span class="nb-ico">📦</span><span>Status</span>
-  </a>
-
-  <a class="nav-btn nb-green" 
-     href="https://maps.google.com/?q=Wisma+Laundry" 
-     target="_blank" rel="noopener">
-    <span class="nb-ico">📍</span><span>Lokasi</span>
-  </a>
-
-  <a class="nav-btn nb-wa" 
-     href="https://wa.me/6281234567890" 
-     target="_blank" rel="noopener">
-    <span class="nb-ico">💬</span><span>Chat WA</span>
-  </a>
-
-</nav>
+    <a class="nav-btn nb-sky"
+       href="https://script.google.com/macros/s/AKfycbxtVstuLMKCsJXJlrt9JHRWg9d19vhnONXx9eLcOeERi2CvNXn6SE33e7_OK6352T0/exec"
+       target="_blank" rel="noopener" aria-label="Halaman Layanan">
+      <span class="nb-ico" aria-hidden="true">🧺</span><span>Layanan</span>
+    </a>
+    <a class="nav-btn nb-teal"
+       href="https://script.google.com/macros/s/AKfycbxtVstuLMKCsJXJlrt9JHRWg9d19vhnONXx9eLcOeERi2CvNXn6SE33e7_OK6352T0/exec?page=harga"
+       target="_blank" rel="noopener" aria-label="Cek Harga Laundry">
+      <span class="nb-ico" aria-hidden="true">💰</span><span>Harga</span>
+    </a>
+    <a class="nav-btn nb-amber"
+       href="https://script.google.com/macros/s/AKfycbxtVstuLMKCsJXJlrt9JHRWg9d19vhnONXx9eLcOeERi2CvNXn6SE33e7_OK6352T0/exec?page=order-list"
+       target="_blank" rel="noopener" aria-label="Cek Status Cucian">
+      <span class="nb-ico" aria-hidden="true">📦</span><span>Status</span>
+    </a>
+    <a class="nav-btn nb-green"
+       href="https://maps.google.com/?q=Wisma+Laundry"
+       target="_blank" rel="noopener" aria-label="Lokasi di Google Maps">
+      <span class="nb-ico" aria-hidden="true">📍</span><span>Lokasi</span>
+    </a>
+    <a class="nav-btn nb-wa"
+       href="https://wa.me/6281328267973?text=Halo+Wisma+Laundry,+saya+mau+bertanya"
+       target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+      <span class="nb-ico" aria-hidden="true">💬</span><span>Chat WA</span>
+    </a>
+  </nav>
 
 </main>
 
@@ -413,7 +412,7 @@ const SLIDES = [
     fallback   : '⚡',
     fallbackSub: 'Laundry Ekspres',
     hasGallery : true,  galleryIdx: 1,
-    hasVideo   : false,
+    hasVideo   : true,
     videoUrl   : 'https://www.youtube.com/embed/GANTI_ID_VIDEO',  // ← ganti ID video
   },
   {
